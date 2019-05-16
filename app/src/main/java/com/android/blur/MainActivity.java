@@ -9,6 +9,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.backends.pipeline.PipelineDraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.facebook.imagepipeline.postprocessors.BlurPostProcessor;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 
@@ -30,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        mBlurView = (SimpleDraweeView) findViewById(R.id.background_view);
-        mSingerView = (SimpleDraweeView) findViewById(R.id.singer_view);
+        mBlurView = findViewById(R.id.background_view);
+        mSingerView = findViewById(R.id.singer_view);
 
         mSingerView.setImageURI(Uri.parse(SINGER_URL));
 
         ImageRequest request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(SINGER_URL))
-                .setPostprocessor(new FastBlurPostprocessor(60f))
+                .setPostprocessor(new BlurPostProcessor(10, this, 1))
                 .build();
 
         PipelineDraweeController controller = (PipelineDraweeController)Fresco.newDraweeControllerBuilder().setImageRequest(request)
