@@ -1,6 +1,6 @@
 # android-fresco-blur
 
-实现网易云音乐图片高斯模糊，请更新 [fresco](https://github.com/facebook/fresco) 版本，内部已实现 `BlurPostProcessor`，使用方式如下：
+实现网易云音乐图片高斯模糊，请更新 [fresco](https://github.com/facebook/fresco) 版本，内部已实现 [BlurPostProcessor](https://github.com/facebook/fresco/blob/master/imagepipeline/src/main/java/com/facebook/imagepipeline/postprocessors/BlurPostProcessor.java)，使用方式如下：
 
 ```java
 ImageRequest request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(SINGER_URL))
