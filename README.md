@@ -7,7 +7,7 @@ ImageRequest request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(SINGER
         .setPostprocessor(new BlurPostProcessor(10, this, 1))
         .build();
 
-PipelineDraweeController controller = (PipelineDraweeController)Fresco.newDraweeControllerBuilder()
+PipelineDraweeController controller = (PipelineDraweeController) Fresco.newDraweeControllerBuilder()
         .setImageRequest(request)
         .setOldController(mBlurView.getController())
         .build();
