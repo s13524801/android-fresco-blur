@@ -24,10 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
-                .setBitmapsConfig(Bitmap.Config.ARGB_8888)
-                .build();
-        Fresco.initialize(this, config);
+        initFresco();
 
         setContentView(R.layout.activity_main);
 
@@ -40,11 +37,18 @@ public class MainActivity extends AppCompatActivity {
                 .setPostprocessor(new BlurPostProcessor(10, this, 1))
                 .build();
 
-        PipelineDraweeController controller = (PipelineDraweeController)Fresco.newDraweeControllerBuilder().setImageRequest(request)
+        PipelineDraweeController controller = (PipelineDraweeController) Fresco.newDraweeControllerBuilder().setImageRequest(request)
                 .setOldController(mBlurView.getController())
                 .build();
 
         mBlurView.setController(controller);
+    }
+
+    private void initFresco() {
+        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
+                .setBitmapsConfig(Bitmap.Config.ARGB_8888)
+                .build();
+        Fresco.initialize(this, config);
     }
 
     @Override
